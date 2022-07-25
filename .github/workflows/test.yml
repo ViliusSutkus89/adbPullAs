@@ -131,6 +131,7 @@ jobs:
             api-level: 33
             api-type-target: google_apis
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
           name: app-release.apk
