@@ -49,10 +49,10 @@ jobs:
           java-version: 11
       - uses: android-actions/setup-android@v2
 
-      - run: ./gradlew assembleRelease
+      - run: ./gradlew assembleDebug
         working-directory: TestApplication
 
-      - run: ls -lhR TestApplication/app/build/outputs/apk/release/
+      - run: ls -lhR TestApplication/app/build/outputs/apk/
 
       - uses: actions/upload-artifact@v3
         with:
@@ -143,7 +143,7 @@ jobs:
             mkdir -p testResults
             adb logcat -c || true
             adb logcat > testResults/logcat.txt &
-            adb install app-release.apk
+            adb install app-debug.apk
             adb shell am start -W $applicationId/$applicationId.MainActivity
             ./adbPullAs.py $applicationId /data/data/$applicationId testResults
             test -f testResults/cache/activityScreenshot.png
