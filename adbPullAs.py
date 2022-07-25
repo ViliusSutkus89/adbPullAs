@@ -3,7 +3,7 @@
 # ViliusSutkus89.com
 # https://github.com/ViliusSutkus89/adbPullAs
 #
-# adbPullAs - adb pull wrapper to pull files from package private directories
+# adbPullAs - adb pull wrapper to pull package private files from Android device
 #
 # adbPullAs is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 3,
@@ -168,7 +168,7 @@ def print_usage(output_to=sys.stdout):
 
 
 def print_version():
-    print(os.path.basename(sys.argv[0]), '-', 'adb pull wrapper to pull files from package private directories')
+    print(os.path.basename(sys.argv[0]), '-', 'adb pull wrapper to pull package private files from Android device')
     print('version: ', version)
     print()
     print('THIS WORKS ONLY ON DEBUG APPLICATIONS')
