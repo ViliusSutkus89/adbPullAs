@@ -97,7 +97,7 @@ class AdbPullAs:
                 except FileExistsError:
                     pass
 
-            ls_proc = subprocess.run(self.run_as_package + ('ls', remote_dir), capture_output=True, text=True)
+            ls_proc = subprocess.run(self.run_as_package + ('ls', f'{remote_dir}/'), capture_output=True, text=True)
             for dir_entry in ls_proc.stdout.splitlines():
                 dir_entry_file = PurePosixPath(remote_dir, dir_entry)
                 if self.fs_test.is_file(dir_entry_file):
