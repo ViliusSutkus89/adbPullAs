@@ -23,7 +23,7 @@ import subprocess
 import sys
 from pathlib import PurePosixPath, PurePath
 
-version = '1.0.0'
+version = '1.0.0' ####################### buffer for in-place file modification, in case version STRING needs to grow
 
 
 class FsTest:

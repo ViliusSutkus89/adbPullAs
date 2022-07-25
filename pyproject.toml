@@ -1,6 +1,6 @@
 [project]
 name = 'adbPullAs'
-version = '1.0.0'
+version = '1.0.0' ####################### buffer for in-place file modification, in case version STRING needs to grow
 description = 'adb pull wrapper to pull package private files from Android device'
 authors = [{name="Vilius Sutkus '89", email="ViliusSutkus89@gmail.com"}]
 readme = 'README.md'
