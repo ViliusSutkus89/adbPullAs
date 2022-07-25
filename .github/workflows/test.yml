@@ -63,6 +63,8 @@ jobs:
           APP_SIGNING_PASS: ${{ secrets.APP_SIGNING_PASS }}
           APP_SIGNING_ALIAS: ${{ secrets.APP_SIGNING_ALIAS }}
 
+      - run: ls -lhR TestApplication/app/build/outputs/apk/release/
+
       - uses: actions/upload-artifact@v3
         with:
           name: app-release.apk
