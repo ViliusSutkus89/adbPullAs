@@ -149,7 +149,7 @@ jobs:
             mkdir -p testResults
             adb logcat -c || true
             adb logcat > testResults/logcat.txt &
-            adb install app/build/outputs/apk/release/app-release.apk
+            adb install app-release.apk
             adb shell am start -W $PACKAGE/$PACKAGE.MainActivity
             ../adbPullAs.py $PACKAGE /data/data/$PACKAGE testResults
             test -f testResults/cache/activityScreenshot.png
