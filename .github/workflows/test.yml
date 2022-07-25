@@ -155,8 +155,8 @@ jobs:
             adb logcat -c || true
             adb logcat > testResults/logcat.txt &
             adb install app-release.apk
-            adb shell am start -W $PACKAGE/$PACKAGE.MainActivity
-            ../adbPullAs.py $PACKAGE /data/data/$PACKAGE testResults
+            adb shell am start -W $applicationId/$applicationId.MainActivity
+            ../adbPullAs.py $applicationId /data/data/$applicationId testResults
             test -f testResults/cache/activityScreenshot.png
 
       - uses: actions/upload-artifact@v3
