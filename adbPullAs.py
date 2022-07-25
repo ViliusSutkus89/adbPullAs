@@ -85,11 +85,10 @@ class AdbPullAs:
             local_dir = PurePath(local_dir, s)
 
         print('Pulling', remote_dir, '->', local_dir)
-        ret_val = True
 
         if not self.fs_test.exists(remote_dir):
             print(remote_dir, 'does not exist!', file=sys.stderr)
-            ret_val = False
+            return False
 
         elif self.fs_test.is_directory(remote_dir):
             if sub_items:
@@ -102,11 +101,11 @@ class AdbPullAs:
             for dir_entry in ls_proc.stdout.splitlines():
                 dir_entry_file = PurePosixPath(remote_dir, dir_entry)
                 if self.fs_test.is_file(dir_entry_file):
-                    if not self.__pull_file(dir_entry_file, local_dir):
-                        ret_val = False
-                elif not self.__pull(remote_entry_point, sub_items + (dir_entry, )):
-                    ret_val = False
-        return ret_val
+                    self.__pull_file(dir_entry_file, local_dir)
+                else:
+                    self.__pull(remote_entry_point, sub_items + (dir_entry, ))
+
+        return True
 
     def pull(self, remote):
         remote = PurePosixPath(remote)
