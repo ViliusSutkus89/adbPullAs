@@ -1,0 +1,18 @@
+[project]
+name = 'adbPullAs'
+version = '1.0.0'
+description = 'adb pull wrapper to pull package private files from Android device'
+authors = [{name="Vilius Sutkus '89", email="ViliusSutkus89@gmail.com"}]
+readme = 'README.md'
+license = { file="LICENSE" }
+
+[project.urls]
+"Homepage" = "https://github.com/ViliusSutkus89/adbPullAs/"
+"Bug Tracker" = "https://github.com/ViliusSutkus89/adbPullAs/issues"
+
+[build-system]
+requires = ['setuptools']
+build-backend = 'setuptools.build_meta'
+
+[projects.scripts]
+adbPullAs = 'adbPullAs:main'
