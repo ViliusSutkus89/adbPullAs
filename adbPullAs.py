@@ -1,4 +1,4 @@
-#!env python3
+#!/usr/bin/env python3
 # Copyright (C) 2022
 # ViliusSutkus89.com
 # https://github.com/ViliusSutkus89/adbPullAs
