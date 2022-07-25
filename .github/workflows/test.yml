@@ -51,8 +51,8 @@ jobs:
 
       - id: decodeKeystore
         run: |
-          echo "${{ env.APP_SIGNING_KEYFILE_BASE64 }}" | base64 --decode - > "$HOME/TestApplication/$applicationId.jks"
-          echo "::set-output name=APP_SIGNING_KEYFILE::$HOME/TestApplication/$applicationId.jks"
+          echo "${{ env.APP_SIGNING_KEYFILE_BASE64 }}" | base64 --decode - > "$HOME/$applicationId.jks"
+          echo "::set-output name=APP_SIGNING_KEYFILE::$HOME/$applicationId.jks"
         env:
           APP_SIGNING_KEYFILE_BASE64: ${{ secrets.APP_SIGNING_KEYFILE_BASE64 }}
 
