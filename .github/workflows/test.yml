@@ -82,15 +82,51 @@ jobs:
           - arch: x86
             api-level: 16
             api-type-target: default
-          # Oldest x86_64 image
-          - arch: x86_64
+          - arch: x86
+            api-level: 17
+            api-type-target: default
+          - arch: x86
+            api-level: 18
+            api-type-target: default
+          - arch: x86
+            api-level: 19
+            api-type-target: default
+          - arch: x86
             api-level: 21
             api-type-target: default
-          # Latest x86 image
+          - arch: x86
+            api-level: 22
+            api-type-target: default
+          - arch: x86
+            api-level: 23
+            api-type-target: default
+          - arch: x86
+            api-level: 24
+            api-type-target: default
+          - arch: x86
+            api-level: 25
+            api-type-target: default
+          - arch: x86
+            api-level: 26
+            api-type-target: default
+          - arch: x86
+            api-level: 27
+            api-type-target: default
+          - arch: x86
+            api-level: 28
+            api-type-target: default
+          - arch: x86
+            api-level: 29
+            api-type-target: default
           - arch: x86
             api-level: 30
-            api-type-target: google_atd
-          # Latest image
+            api-type-target: aosp_atd
+          - arch: x86_64
+            api-level: 31
+            api-type-target: default
+          - arch: x86_64
+            api-level: 32
+            api-type-target: google_apis
           - arch: x86_64
             api-level: 33
             api-type-target: google_apis
@@ -117,7 +153,6 @@ jobs:
             adb shell am start -W $PACKAGE/$PACKAGE.MainActivity
             ../adbPullAs.py $PACKAGE /data/data/$PACKAGE testResults
             test -f testResults/cache/activityScreenshot.png
-
 
       - uses: actions/upload-artifact@v3
         if: always()
