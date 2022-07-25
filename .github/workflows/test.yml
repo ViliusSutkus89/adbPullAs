@@ -59,9 +59,9 @@ jobs:
       - run: ./gradlew assembleRelease
         working-directory: TestApplication
         env:
-          SIGNING_KEYFILE: ${{ steps.decodeKeystore.outputs.APP_SIGNING_KEYFILE }}
-          SIGNING_PASS: ${{ secrets.APP_SIGNING_PASS }}
-          SIGNING_ALIAS: ${{ secrets.APP_SIGNING_ALIAS }}
+          APP_SIGNING_KEYFILE: ${{ steps.decodeKeystore.outputs.APP_SIGNING_KEYFILE }}
+          APP_SIGNING_PASS: ${{ secrets.APP_SIGNING_PASS }}
+          APP_SIGNING_ALIAS: ${{ secrets.APP_SIGNING_ALIAS }}
 
       - uses: actions/upload-artifact@v3
         with:
