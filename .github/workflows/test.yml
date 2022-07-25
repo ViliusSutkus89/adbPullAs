@@ -54,7 +54,7 @@ jobs:
           echo "${{ env.APP_SIGNING_KEYFILE_BASE64 }}" | base64 --decode - > "$HOME/TestApplication/$applicationId.jks"
           echo "::set-output name=APP_SIGNING_KEYFILE::$HOME/TestApplication/$applicationId.jks"
         env:
-          SIGNING_KEYFILE_BASE64: ${{ secrets.APP_SIGNING_KEYFILE_BASE64 }}
+          APP_SIGNING_KEYFILE_BASE64: ${{ secrets.APP_SIGNING_KEYFILE_BASE64 }}
 
       - run: ./gradlew assembleRelease
         working-directory: TestApplication
