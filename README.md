@@ -24,3 +24,10 @@ Recursive wrapper around adb.
 Listing directories and reading files while using runtime permissions of specified application.
 
 Piping contents into `/data/local/tmp` using normal adb user permissions and `adb pull`'ing into host computer.
+
+### Install
+
+adbPullAs is available on [PyPI](https://test.pypi.org/project/adbPullAs/)
+```shell
+python -m pip install adbPullAs
+```
