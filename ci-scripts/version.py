@@ -44,7 +44,7 @@ class Versioner:
             for line in fh:
                 if line.startswith('version = '):
                     fh.seek(position)
-                    fh.write(f"version = '{self.__version_str}'")
+                    fh.write(f"version = '{self.__version_str}' #")
                     return True
                 position += len(line)
 
