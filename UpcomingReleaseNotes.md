@@ -1,0 +1,1 @@
+Install adbPullAs to bin (Issue #1)
