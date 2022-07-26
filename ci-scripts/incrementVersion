@@ -28,9 +28,12 @@ if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:], '', ['major', 'minor', 'patch'])
         for o, a in opts:
-            if o == '--major': major = True
-            if o == '--minor': minor = True
-            if o == '--patch': patch = True
+            if o == '--major':
+                major = True
+            if o == '--minor':
+                minor = True
+            if o == '--patch':
+                patch = True
 
     except getopt.GetoptError as err:
         print(err, file=sys.stderr)
@@ -38,13 +41,12 @@ if __name__ == '__main__':
 
     versioner = Versioner()
     old_version = versioner.get_version_str()
-    updated_file_list = []
     if major:
-        updated_file_list = versioner.increment_major()
+        versioner.increment_major()
     elif minor:
-        updated_file_list = versioner.increment_minor()
+        versioner.increment_minor()
     elif patch:
-        updated_file_list = versioner.increment_patch()
+        versioner.increment_patch()
     else:
         print('Specify either --major, --minor or --patch', file=sys.stderr)
         exit(os.EX_USAGE)
@@ -52,6 +54,4 @@ if __name__ == '__main__':
     new_version = versioner.get_version_str()
     print(f'::set-output name=oldVersion::{old_version}')
     print(f'::set-output name=newVersion::{new_version}')
-
-    updated_file_list = ' '.join(updated_file_list)
-    print(f'::set-output name=files::{updated_file_list}')
+    print(f'::set-output name=files::{versioner.version_file}')

@@ -19,11 +19,10 @@
 
 import getopt
 import os
+import pathlib
 import subprocess
 import sys
 from pathlib import PurePosixPath, PurePath
-
-version = '1.0.1' ####################### buffer for in-place file modification, in case version STRING needs to grow
 
 
 class FsTest:
@@ -168,8 +167,11 @@ def print_usage(output_to=sys.stdout):
 
 
 def print_version():
+    here = pathlib.Path(__file__).parent.resolve()
+    version = (here / 'VERSION').read_text(encoding='utf-8')
+
     print(os.path.basename(sys.argv[0]), '-', 'adb pull wrapper to pull package private files from Android device')
-    print('version: ', version)
+    print('version:', version)
     print()
     print('THIS WORKS ONLY ON DEBUG APPLICATIONS')
     print()
