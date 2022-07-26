@@ -50,7 +50,8 @@ jobs:
       - run: ./ci-scripts/getVersion --ci
         id: version
 
-      - run: cp src/adbPullAs/__init__.py adbPullAs.py
+      - name: Save __init__.py as adbPullAs.py for nicer attachment int GitHub Release
+        run: cp src/adbPullAs/__init__.py adbPullAs.py
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
@@ -60,6 +61,7 @@ jobs:
           name: "${{ github.event.repository.name }} v${{ steps.version.outputs.version }}"
           artifacts: "dist/*,adbPullAs.py"
           bodyFile: "UpcomingReleaseNotes.md"
+      - run: rm adbPullAs.py
 
       - run: ./ci-scripts/incrementVersion --patch
         id: postReleaseVersionIncrement
