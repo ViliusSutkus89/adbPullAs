@@ -31,3 +31,22 @@ adbPullAs is available on [PyPI](https://test.pypi.org/project/adbPullAs/)
 ```shell
 python -m pip install adbPullAs
 ```
+
+### Usage
+
+adbPullAs is used as follows:
+`adbPullAs PACKAGE_NAME ANDROID_SOURCE... COMPUTER_DESTINATION_DIR`.
+
+`COMPUTER_DESTINATION_DIR` can be omitted to pull into current working directory,
+	but only with a single supplied `ANDROID_SOURCE` (example 1).
+
+Multiple `ANDROID_SOURCE`s require `COMPUTER_DESTINATION_DIR` to be supplied (example 2).
+
+###### Example 1
+```
+adbPullAs com.viliussutkus89.application /data/data/com.viliussutkus89.application/databases/androidx.work.workdb
+```
+###### Example 2
+```
+adbPullAs com.viliussutkus89.application /data/data/com.viliussutkus89.application/cache /data/data/com.viliussutkus89.application/files ./pulled_from_device
+```
