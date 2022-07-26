@@ -1,0 +1,76 @@
+# release.yml
+#
+# Copyright (C) 2022 ViliusSutkus89.com
+#
+# adbPullAs is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 3,
+# as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+name: release
+on: workflow_dispatch
+
+permissions:
+  actions: none
+  checks: none
+  contents: write
+  deployments: none
+  issues: none
+  packages: none
+  pull-requests: none
+  repository-projects: none
+  security-events: none
+  statuses: none
+
+jobs:
+  release:
+    environment: Release
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - run: pip install build twine
+
+      - run: python -m build
+
+      - run: twine upload -u __token__ --verbose --disable-progress-bar --non-interactive dist/*
+        env:
+          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
+
+      - run: ./ci-scripts/getVersion --ci
+        id: version
+
+      - run: cp src/adbPullAs/__init__.py adbPullAs.py
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "v${{ steps.version.outputs.version }}"
+          name: "${{ github.event.repository.name }} v${{ steps.version.outputs.version }}"
+          artifacts: "dist/*,adbPullAs.py"
+          bodyFile: "UpcomingReleaseNotes.md"
+
+      - run: ./ci-scripts/incrementVersion --patch
+        id: postReleaseVersionIncrement
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Post release version increment to ${{ steps.postReleaseVersionIncrement.outputs.newVersion }} (from ${{ steps.postReleaseVersionIncrement.outputs.oldVersion }})"
+          file_pattern: ${{ steps.postReleaseVersionIncrement.outputs.files }}
+
+      - run: echo -n > UpcomingReleaseNotes.md
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Post release UpcomingReleaseNotes.md truncation"
+          file_pattern: UpcomingReleaseNotes.md
