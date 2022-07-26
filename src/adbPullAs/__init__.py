@@ -154,15 +154,16 @@ def main():
 
 
 def print_usage(output_to=sys.stdout):
-    print(os.path.basename(sys.argv[0]), 'usage:', file=output_to)
-    print(os.path.basename(sys.argv[0]), 'PACKAGE_NAME ANDROID_SOURCE... COMPUTER_DESTINATION_DIR\n', file=output_to)
+    app = os.path.basename(sys.argv[0])
+    print(app, 'usage:', file=output_to)
+    print(app, 'PACKAGE_NAME ANDROID_SOURCE... COMPUTER_DESTINATION_DIR\n', file=output_to)
     print('COMPUTER_DESTINATION_DIR can be omitted to pull into current working directory,', file=output_to)
     print('\tbut only with a single supplied ANDROID_SOURCE (first example).', file=output_to)
     print('Multiple ANDROID_SOURCEs require COMPUTER_DESTINATION_DIR to be supplied.\n', file=output_to)
     print('Examples:', file=output_to)
     pn = 'com.viliussutkus89.application'
-    print(sys.argv[0], pn, f'/data/data/{pn}/databases/androidx.work.workdb', file=output_to)
-    print(sys.argv[0], pn, f'/data/data/{pn}/cache', f'/data/data/{pn}/files',
+    print(app, pn, f'/data/data/{pn}/databases/androidx.work.workdb', file=output_to)
+    print(app, pn, f'/data/data/{pn}/cache', f'/data/data/{pn}/files',
           './pulled_from_device', file=output_to)
 
 
