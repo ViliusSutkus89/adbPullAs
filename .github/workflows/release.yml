@@ -39,9 +39,11 @@ jobs:
         with:
           python-version: '3.x'
 
-      - run: pip install build twine
+      - run: pip install --upgrade twine build setuptools wheel
 
       - run: python -m build
+
+      - run: twine check dist/*
 
       - run: twine upload -u __token__ --verbose --disable-progress-bar --non-interactive dist/*
         env:
