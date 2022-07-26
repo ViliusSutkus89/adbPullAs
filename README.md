@@ -1,6 +1,7 @@
 # adbPullAs
 
 [![test](https://github.com/ViliusSutkus89/adbPullAs/actions/workflows/test.yml/badge.svg)](https://github.com/ViliusSutkus89/adbPullAs/actions/workflows/test.yml)
+[![adbPullAs on PyPI](https://badge.fury.io/py/adbPullAs.svg)](https://pypi.org/project/adbPullAs/)
 
 adb pull wrapper to pull package private files from Android device.
 
