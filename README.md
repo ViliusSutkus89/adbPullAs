@@ -1,4 +1,7 @@
 # adbPullAs
+
+[![test](https://github.com/ViliusSutkus89/adbPullAs/actions/workflows/test.yml/badge.svg)](https://github.com/ViliusSutkus89/adbPullAs/actions/workflows/test.yml)
+
 adb pull wrapper to pull package private files from Android device.
 
 WORKS ONLY ON DEBUG APPLICATIONS.
