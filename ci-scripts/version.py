@@ -20,7 +20,7 @@ import os.path
 class Versioner:
     def __init__(self):
         abs_dir_name = os.path.abspath(os.path.dirname(__file__))
-        self.__version_files = [os.path.abspath(os.path.join(abs_dir_name, f)) for f in ('../pyproject.toml', '../adbPullAs.py')]
+        self.__version_files = [os.path.abspath(os.path.join(abs_dir_name, f)) for f in ('../pyproject.toml', '../src/adbPullAs/__init__.py')]
         self.__version_str = self.__get_version()
         if not self.__version_str:
             raise RuntimeError("Unable to find version string.")
