@@ -145,7 +145,7 @@ jobs:
             adb logcat > testResults/logcat.txt &
             adb install app-debug.apk
             adb shell am start -W $applicationId/$applicationId.MainActivity
-            ./adbPullAs.py $applicationId /data/data/$applicationId testResults
+            ./src/adbPullAs/__init__.py $applicationId /data/data/$applicationId testResults
             test -f testResults/cache/activityScreenshot.png
 
       - uses: actions/upload-artifact@v3
