@@ -143,10 +143,9 @@ jobs:
             mkdir -p testResults
             adb logcat -c || true
             adb logcat > testResults/logcat.txt &
+
             adb install app-debug.apk
-            adb shell am start -W $applicationId/$applicationId.MainActivity
-            ./src/adbPullAs/__init__.py $applicationId /data/data/$applicationId testResults
-            test -f testResults/cache/activityScreenshot.png
+            .github/workflows/run_test.sh
 
       - uses: actions/upload-artifact@v3
         if: always()
