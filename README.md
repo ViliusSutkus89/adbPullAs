@@ -27,7 +27,7 @@ Piping contents into `/data/local/tmp` using normal adb user permissions and `ad
 
 ### Install
 
-adbPullAs is available on [PyPI](https://test.pypi.org/project/adbPullAs/)
+adbPullAs is available on [PyPI](https://pypi.org/project/adbPullAs/)
 ```shell
 python -m pip install adbPullAs
 ```
