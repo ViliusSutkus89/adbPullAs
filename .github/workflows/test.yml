@@ -145,7 +145,7 @@ jobs:
             adb logcat > testResults/logcat.txt &
 
             adb install app-debug.apk
-            .github/workflows/run_test.sh
+            .github/workflows/run_test_without_pull_as_wrapper.sh
 
       - uses: actions/upload-artifact@v3
         if: always()
